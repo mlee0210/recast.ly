@@ -7,7 +7,7 @@
 //     </nav>
 //     <div className="row">
 //       <div className="col-md-7">
-//         <VideoPlayer /> 
+//         <VideoPlayer video={props.videos[0]} /> 
 //       </div>
 //       <div className="col-md-5">
 //         <VideoList videos={props.videos} />
@@ -18,8 +18,8 @@
 
 class App extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -33,7 +33,7 @@ class App extends React.Component {
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <VideoPlayer video={props.videos[0]} /> 
+            <VideoPlayer video={this.props.videos[0]} /> 
           </div>
           <div className="col-md-5">
             <VideoList videos={this.props.videos} />
