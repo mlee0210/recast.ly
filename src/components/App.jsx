@@ -20,6 +20,31 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      videoList: window.exampleVideoData,
+      currentVideo: window.exampleVideoData[0]
+    };
+    this.options = {key: 'AIzaSyB6QS1JCG27ye_4dWmcURtFi3M5SjgnBlc', max: 5, query: ''};
+  }
+  
+  handleClick(video) {
+    this.setState ({
+      currentVideo: video
+    });
+  }
+  
+  setVideoData(data) {
+    this.setState ({
+      videoList: data,
+      currentVideo: data[0]
+    });
+  }
+
+  handleSearch(word) {
+    this.options.query = word;
+    searchYouTube(this.options, this.setVideoData.bind(this));
+
   }
 
   render() {
@@ -28,15 +53,15 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search />
+            <Search onClick={this.handleSearch.bind(this)}/>
           </div>
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <VideoPlayer video={this.props.videos[0]} /> 
+            <VideoPlayer video={this.state.currentVideo} /> 
           </div>
           <div className="col-md-5">
-            <VideoList videos={this.props.videos} />
+            <VideoList videos={this.state.videoList} onClick={this.handleClick.bind(this)} />
           </div>
         </div>
       </div>    

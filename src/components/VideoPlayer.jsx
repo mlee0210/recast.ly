@@ -10,8 +10,6 @@ var VideoPlayer = (props) => (
   </div>
 );
 
-//src ={'https://www.youtube.com/embed/' props.video.id.videoId} for line 4
-
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
 VideoPlayer.propTypes = {
